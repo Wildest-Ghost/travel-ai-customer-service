@@ -6,7 +6,7 @@
 
 ---
 
-## ✨ 核心特性
+##  核心特性
 
 - **多智能体编排**：基于 Spring AI Alibaba Graph 实现 `Router 分诊 + 订单/改签/FAQ/兜底` 四专家协作，状态机驱动
 - **Function Calling**：AI 通过工具调用跨服务发起真实业务操作（查订单、改签）
@@ -16,7 +16,7 @@
 - **统一鉴权**：JWT + 网关全局校验 + userId 透传，支持"查我的订单"
 - **限流熔断**：Sentinel 网关限流 + LLM 调用熔断降级，依赖故障时优雅降级
 
-## 🏗 技术架构
+##  技术架构
 
 ```
                     ┌──────────────┐
@@ -38,7 +38,7 @@
         Redis 短期记忆 / PostgreSQL+pgvector 向量库 + 永久历史
 ```
 
-## 🛠 技术栈
+##  技术栈
 
 | 分类 | 技术 |
 |---|---|
@@ -49,7 +49,7 @@
 | 前端 | Vue3 + TypeScript + Vite + Pinia + Vue Router + Axios |
 | 部署 | Docker（Nacos / PostgreSQL / Redis） |
 
-## 📁 模块结构
+##  模块结构
 
 ```
 agent/
@@ -63,7 +63,7 @@ agent/
 └── frontend/         # Vue3 前端
 ```
 
-## 🚀 本地运行
+##  本地运行
 
 ### 1. 启动中间件（Docker）
 ```bash
@@ -93,11 +93,11 @@ npm install
 npm run dev   # http://localhost:5173
 ```
 
-## 📸 功能演示
+##  功能演示
 
 > （在此插入截图：登录页、聊天界面、查订单、改签、RAG 问答、会话历史列表）
 
-## 📝 设计要点
+##  设计要点
 
 - **微服务解耦**：跨服务不使用数据库外键，靠应用层（OpenFeign）保证一致性
 - **改签建模**：原订单状态置为 CHANGED + 新建改签订单 + `original_order_id` 关联，保留审计链
