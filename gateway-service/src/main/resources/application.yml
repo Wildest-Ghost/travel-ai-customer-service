@@ -1,0 +1,44 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    sentinel:
+      eager: true
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOriginPatterns: "*"   # 开发环境放开，生产应指定前端域名
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      discovery:
+        locator:
+          enabled: false   # 手动配置路由，不自动暴露服务
+      routes:
+        - id: user-service
+          uri: lb://user-service          # lb:// 从 Nacos 取实例做负载均衡
+          predicates:
+            - Path=/users/**
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/products/**
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/orders/**
+        - id: ai-chat-service
+          uri: lb://ai-chat-service
+          predicates:
+            - Path=/chat/**
+
+# secret 须与 user-service 的 jwt.secret 一致，否则验签失败
+jwt:
+  secret: ThisIsADevSecretKeyForJwtHS256PleaseChangeInProduction1234567890

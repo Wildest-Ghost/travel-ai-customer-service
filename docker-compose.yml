@@ -1,0 +1,42 @@
+# 项目依赖中间件一键启动：
+#   docker compose up -d
+services:
+  nacos:
+    image: nacos/nacos-server:v2.4.3
+    container_name: nacos
+    environment:
+      - MODE=standalone
+      - EMBEDDED_STORAGE=embedded
+      - JVM_XMS=256m
+      - JVM_XMX=512m
+    ports:
+      - "8848:8848"   # HTTP 控制台 + OpenAPI
+      - "9848:9848"   # gRPC（Spring Cloud Alibaba 客户端通信）
+    restart: unless-stopped
+
+  postgres:
+    image: pgvector/pgvector:pg16   # PostgreSQL + pgvector 向量扩展
+    container_name: postgres
+    environment:
+      POSTGRES_USER: agent
+      POSTGRES_PASSWORD: agent123
+      POSTGRES_DB: agent
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
