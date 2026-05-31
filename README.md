@@ -1,4 +1,4 @@
-# 旅行预订智能客服平台
+<img width="2539" height="1226" alt="4d90e071-ba7d-4a31-addc-a5e8f24b447a" src="https://github.com/user-attachments/assets/94b16036-fcd6-4f59-9a25-2c56169643f5" /><img width="2539" height="1226" alt="4d90e071-ba7d-4a31-addc-a5e8f24b447a" src="https://github.com/user-attachments/assets/4aad0b8d-cb13-402d-86cb-7782a1738df5" /># 旅行预订智能客服平台
 
 基于 **Spring Cloud Alibaba 微服务** + **Spring AI Alibaba 多智能体** 的旅行预订智能客服系统。用户可通过自然语言查询订单、办理改签、咨询政策；系统通过多智能体路由分诊、Function Calling 调用业务微服务、RAG 检索知识库，完成端到端的智能应答。
 
@@ -94,8 +94,9 @@ npm run dev   # http://localhost:5173
 ```
 
 ##  功能演示
+<img width="2546" height="1228" alt="9e155ba2-7a04-43c8-b6de-fb132b2a5697" src="https://github.com/user-attachments/assets/82af5be1-8c82-4d41-b466-bdce3a81e4c4" />
 
-> （在此插入截图：登录页、聊天界面、查订单、改签、RAG 问答、会话历史列表）
+
 
 ##  设计要点
 
